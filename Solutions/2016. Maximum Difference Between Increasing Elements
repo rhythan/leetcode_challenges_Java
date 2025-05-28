@@ -1,0 +1,20 @@
+class Solution {
+    public int maximumDifference(int[] nums) {
+        int n = nums.length ; 
+        int ans = 0 ;
+        for(int i = 0 ; i < n ; i ++){
+            for(int j = i + 1 ; j < n ; j ++){
+                int currentans = 0 ;
+                if(nums[i]<nums[j]){
+                    currentans = nums[j]-nums[i];
+                }
+                ans = Math.max(currentans,ans);
+            }
+        }
+        if(ans!=0){
+            return ans;
+        }
+        return -1;
+
+    }
+}
