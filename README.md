@@ -66,7 +66,7 @@ BASH(git clone https://github.com/rhythan/leetcode_challenges_Java.git)
 
 Let’s discuss coding, algorithms, or collaborations!
 
-  💠LinkedIn: [https://www.linkedin.com/in/rhythan-m-2b1aa5257?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app]
+  💠LinkedIn: [https://www.linkedin.com/in/rhythan-m-2b1aa5257/]
 
   💠LeetCode: [https://leetcode.com/u/Rhythan/]
 
