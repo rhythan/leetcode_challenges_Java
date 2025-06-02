@@ -1,0 +1,11 @@
+class Solution {
+    // This method calculates the nth Fibonacci number using recursion
+    public int fib(int n) {
+        // Base case: if n is 0 or 1, return n
+        if (n <= 1) {
+            return n;
+        }
+        // Recursive case: sum of the two previous Fibonacci numbers
+        return fib(n - 1) + fib(n - 2);
+    }
+}
