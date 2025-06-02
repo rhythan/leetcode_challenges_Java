@@ -1,0 +1,21 @@
+class Solution {
+    // This method checks if a given number is a *perfect number*
+    // A perfect number is a number that is equal to the sum of its proper divisors
+    // Example: 28 is a perfect number since 1 + 2 + 4 + 7 + 14 = 28
+
+    public boolean checkPerfectNumber(int num) {
+        // Initialize sum to store the sum of divisors
+        int sum = 0;
+
+        // Loop from 1 to num/2 (no divisor can be greater than num/2)
+        for (int i = 1; i <= num / 2; i++) {
+            // If i is a divisor of num, add it to the sum
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+
+        // If the sum of divisors equals the original number, it is a perfect number
+        return sum == num;
+    }
+}
