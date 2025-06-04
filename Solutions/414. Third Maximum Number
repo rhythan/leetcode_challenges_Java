@@ -1,0 +1,27 @@
+class Solution {
+    public int thirdMax(int[] nums) {
+        // Use a Set to remove duplicate numbers
+        Set<Integer> s1 = new HashSet<>();
+        for (int i : nums) {
+            s1.add(i);
+        }
+
+        // Convert the Set to an array
+        int[] arr = new int[s1.size()];
+        int j = 0;
+        for (int i : s1) {
+            arr[j++] = i;
+        }
+
+        // Sort the array in ascending order
+        Arrays.sort(arr);
+
+        // If there are at least 3 unique elements, return the 3rd maximum
+        if (arr.length > 2) {
+            return arr[arr.length - 3];
+        }
+
+        // Otherwise, return the maximum element
+        return arr[arr.length - 1];
+    }
+}
