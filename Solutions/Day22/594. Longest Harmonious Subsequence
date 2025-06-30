@@ -1,0 +1,26 @@
+class Solution {
+    public int findLHS(int[] nums) {
+        HashMap<Integer, Integer> hash = new HashMap<>();
+        Arrays.sort(nums);
+
+
+        for(int i : nums ){
+            hash.put(i,hash.getOrDefault(i,0)+1);
+        }
+        int maxharmonious = 0 ;
+        int key1 = - 1 ;
+        int key2 = -1 ;
+
+        for ( int key : hash.keySet()) {
+            if ( hash.containsKey ( key + 1 ) ){
+                int sum = hash.get(key)+hash.get(key + 1 );
+                if(sum > maxharmonious){
+                    maxharmonious = sum ;
+                    key1 = key ;
+                    key2 = key + 1 ; 
+                }
+            }
+        }
+        return maxharmonious;
+    }
+}
