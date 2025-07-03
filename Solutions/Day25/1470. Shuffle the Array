@@ -4,10 +4,9 @@ class Solution {
         int j = 0 ;
         for(int i = 0 ; i < nums.length ; i = i + 2 ){
             arr[i]=nums[j++];
+            arr[i+1]=nums[n++];
         }
-        for(int i = 1 ; i < nums.length ; i = i + 2){
-            arr[i]=nums[j++];
-        }
+       
         return arr ;
     }
 }
