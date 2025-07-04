@@ -1,0 +1,20 @@
+class Solution {
+    public int fourSumCount(int[] arr1, int[] arr2, int[] arr3, int[] arr4) {
+        int n = arr1.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                map.put(arr3[i] + arr4[j], map.getOrDefault(arr3[i] + arr4[j], 0)+1);
+            }
+        }
+
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                count += map.getOrDefault(- (arr1[i] + arr2[j]), 0);
+            }
+        }
+        return count;
+}
+}
