@@ -1,0 +1,29 @@
+class Solution {
+    public int[] leftRightDifference(int[] nums) {
+        int n = nums.length;
+        int[] rightsum = new int[n];
+        int[] leftsum = new int[n];
+        left(nums,leftsum);
+        right(nums,rightsum);
+        for(int i = 0 ; i < n ; i ++){
+            nums[i]=Math.abs(leftsum[i]-rightsum[i]);
+        }
+        return nums;
+    }
+    static int[] left(int[] nums , int[] leftsum){
+            int n = nums.length;
+            leftsum[0]=nums[0];
+            for(int i = 1 ; i < n ; i ++ ){
+                leftsum[i]=leftsum[i-1]+nums[i];
+            }
+            return leftsum;
+        }
+        static int[] right(int[] nums , int[] rightsum){
+            int n = nums.length;
+            rightsum[n-1]=nums[n-1];
+            for(int i = n-2 ; i >=0  ; i -- ){
+                rightsum[i]=rightsum[i+1]+nums[i];
+            }
+            return rightsum;
+        }
+}
