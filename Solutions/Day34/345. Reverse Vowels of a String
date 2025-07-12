@@ -1,0 +1,30 @@
+class Solution {
+    public String reverseVowels(String s) {
+        char[] x = s.toCharArray();
+        int start = 0;
+        int end = s.length() - 1;
+        while (start <= end) {
+            if (!check(x[start])) {
+                start++;
+            } else if (!check(x[end])) {
+                end--;
+            } else {
+                char temp = x[start];
+                x[start] = x[end];
+                x[end] = temp;
+                start++;
+                end--;
+
+            }
+        }
+        return String.valueOf(x);
+    }
+
+    static boolean check(char ch) {
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I'|| ch == 'O' || ch == 'U') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
