@@ -1,0 +1,38 @@
+class Solution {
+    public int[] sortArray(int[] nums) {
+        MergeSort(nums,0,nums.length-1);
+        return nums;
+    }
+    static void MergeSort(int[] nums , int low , int high){
+        if(low>=high){
+            return;
+        }
+        int mid=(low+high)/2;
+        MergeSort(nums,low,mid);
+        MergeSort(nums,mid+1,high);
+        Merge(nums,low,mid,high);
+        }
+    static void Merge(int[] nums, int low, int mid , int high){
+        List<Integer> list = new ArrayList<>();
+        int left = low ;
+        int right = mid+1;
+        while(left<=mid && right<=high){
+            if(nums[left]<=nums[right]){
+                list.add(nums[left++]);
+            }
+            else{
+                list.add(nums[right++]);
+            }
+        }
+        while(left<=mid){
+            list.add(nums[left++]);
+        }
+        while(right<=high){
+            list.add(nums[right++]);
+        }
+        for(int i = 0 ; i < list.size() ; i ++ ){
+            nums[low+i]=list.get(i);
+        }
+        
+    }
+}
