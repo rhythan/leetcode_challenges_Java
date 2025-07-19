@@ -1,0 +1,24 @@
+class Solution {
+    public boolean isValid(String word) {
+        if(word.length()<3){
+            return false;
+        }
+        boolean letter = false ;
+        boolean vowels = false ;
+        for(Character c : word.toCharArray()){
+            if (!Character.isDigit(c) &&!Character.isLetter(c)) {
+                return false;
+            }
+            char l = Character.toLowerCase(c);
+            if("aieou".indexOf(l)>=0){
+                vowels=true;
+            }
+            else if (Character.isLetter(l)){
+                letter = true ;
+            }
+        }
+        return vowels && letter;
+        
+
+    }
+}
