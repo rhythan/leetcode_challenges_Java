@@ -1,0 +1,31 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int marker = Integer.MIN_VALUE-10;
+        for(int i = 0 ; i < n ; i ++){
+            for(int j = 0 ; j < m ; j ++ ){
+                if(matrix[i][j]==0){
+                    for(int z = 0 ; z < n ; z++){
+                        if(matrix[z][j]!=0 && matrix[z][j] != marker){
+                            matrix[z][j]= marker;
+                        }
+                    }
+                    for(int z = 0 ; z < m ; z++){
+                        if(matrix[i][z]!=0 && matrix[i][z] != marker){
+                            matrix[i][z]= marker;
+                        }
+                    }
+                    
+                }
+            }
+        }
+        for(int i = 0 ; i < n ; i ++ ){
+            for(int j = 0 ; j < m ; j ++){
+                if(matrix[i][j] == marker){
+                    matrix[i][j]=0;
+                }
+            }
+        }
+    }
+}
