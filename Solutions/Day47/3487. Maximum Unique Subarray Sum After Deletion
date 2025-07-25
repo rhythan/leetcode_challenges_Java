@@ -1,0 +1,20 @@
+import java.util.*;
+
+class Solution {
+    public int maxSum(int[] nums) {
+        int mx = Arrays.stream(nums).max().getAsInt();
+
+        if (mx <= 0) return mx;
+
+        Set<Integer> set = new HashSet<>();
+        int ans = 0;
+
+        for (int x : nums) {
+            if (x > 0 && set.add(x)) {
+                ans += x;
+            }
+        }
+
+        return ans;
+    }
+}
