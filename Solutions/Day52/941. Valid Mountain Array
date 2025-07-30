@@ -1,0 +1,22 @@
+class Solution {
+    public boolean validMountainArray(int[] arr) {
+        if(arr.length<3){
+            return false ;
+        }
+        int climb = 0 ;
+    
+        while(climb+1<arr.length && arr[climb]<arr[climb+1]){
+            climb++;
+        }
+        if(climb==0 || climb == arr.length-1){
+            return false ;
+        }
+      
+        while(climb+1<arr.length && arr[climb]>arr[climb+1]){
+            climb++;
+        }
+
+        return climb==arr.length-1;
+
+    }
+}
