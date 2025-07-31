@@ -1,0 +1,27 @@
+class Solution {
+    public int getDecimalValue(ListNode head) {
+        if (head == null) {
+            return 0;
+        }
+
+        int num = 0;
+        ListNode temp = head;
+        StringBuilder binaryStr = new StringBuilder();
+        while (temp != null) {
+            binaryStr.append(temp.val); 
+            temp = temp.next;
+        }
+        String binary = binaryStr.toString();
+        int decimal = 0;
+        int power = 0;
+        for (int i = binary.length() - 1; i >= 0; i--) {
+            char c = binary.charAt(i);
+            if (c == '1') {
+                decimal += Math.pow(2, power);
+            }
+            power++;
+        }
+
+        return decimal;
+    }
+}
