@@ -1,0 +1,24 @@
+class Solution {
+    public List<Integer> targetIndices(int[] nums, int target) {
+
+        List<Integer> list = new ArrayList<>();
+        int tc = 0 ;// tc -> total count
+        int cp = 0 ;// cp -> correct place
+        for(int i : nums){
+            if(i==target) tc++;
+            else if (i<target) cp++;
+        }
+        while(tc>0){
+            list.add(cp);
+            cp++;
+            tc--;
+        }
+        // Arrays.sort(nums);
+        // for(int i = 0 ; i < nums.length ; i ++ ){
+        //     if(nums[i]==target){
+        //         list.add(i);
+        //     }
+        // }
+        return list;
+    }
+}
