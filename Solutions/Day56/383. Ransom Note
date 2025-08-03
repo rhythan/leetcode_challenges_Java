@@ -1,0 +1,21 @@
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        HashMap<Character,Integer> s1 = new HashMap<>();
+        HashMap<Character,Integer> s2 = new HashMap<>();
+        for(char ch : ransomNote.toCharArray() ){
+            s1.put(ch,s1.getOrDefault(ch,0)+1);
+        }
+        for(char ch : magazine.toCharArray() ){
+            s2.put(ch,s2.getOrDefault(ch,0)+1);
+        }
+        for(char ch : ransomNote.toCharArray() ){
+            if(!s2.containsKey(ch) || s1.get(ch) > s2.get(ch)){
+                return false ;
+            }
+        }
+        return true;
+
+
+
+    }
+}
