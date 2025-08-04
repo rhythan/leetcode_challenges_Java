@@ -1,0 +1,39 @@
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int[][] arr = new int[n][n];
+        int endP = n*n;
+        int data = 1 , Scol=0 , Srow = 0 ;
+        int Ecol = n-1 , Erow = n - 1 ;
+
+        while(data<=endP){
+            // left to right
+            for(int i = Scol ; i  <= Ecol  ; i ++  ){
+                arr[Srow][i]=data;
+                data++;
+            }
+            Srow++;
+            // top to bott
+            for(int i = Srow ; i  <= Erow  ; i ++  ){
+                arr[i][Ecol]=data;
+                data++;
+            }
+            Ecol--;
+            // right to left
+            for(int i = Ecol ; i  >= Scol; i --  ){
+                arr[Erow][i]=data;
+                data++;
+            }
+            Erow--;
+            //  bott to top 
+            for(int i = Erow ; i  >= Srow ; i --  ){
+                arr[i][Scol]=data;
+                data++;
+            }
+            Scol++;
+
+        } 
+        return arr;
+        
+        
+    }
+}
