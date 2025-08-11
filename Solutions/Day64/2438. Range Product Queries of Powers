@@ -1,0 +1,34 @@
+class Solution {
+    public int[] productQueries(int n, int[][] queries) {
+        List<Integer> pows = new ArrayList<>();
+        int v = 1;
+        while (n > 0) {
+            if (n % 2 == 1) {
+                pows.add(v);
+            }
+            n /= 2;
+            v *= 2;
+        }
+
+        int mod = (int) 1e9 + 7;
+        int L = pows.size();
+
+        int[][] table = new int[L][L];
+        for (int i = 0; i < L; i++) {
+            long prod = 1;
+            for (int j = i; j < L; j++) {
+                prod = (prod * pows.get(j)) % mod;
+                table[i][j] = (int) prod;
+            }
+        }
+
+        int[] res = new int[queries.length];
+        for (int k = 0; k < queries.length; k++) {
+            int l = queries[k][0];
+            int r = queries[k][1];
+            res[k] = table[l][r];
+        }
+
+        return res;
+    }
+}
