@@ -1,0 +1,16 @@
+class Solution {
+    public boolean isSameAfterReversals(int num) {
+        int reversednum = reverse(num);
+        int doubleReversedNum  = reverse(reversednum);
+        return num==doubleReversedNum ;
+    }
+    static int reverse(int num){
+        int answer = 0 ;
+        while(num>0){
+            int a = num%10;
+            answer=(answer*10)+a;
+            num/=10;
+        }
+        return answer;
+    }
+}
