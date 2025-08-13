@@ -1,0 +1,20 @@
+class Solution {
+    public int alternateDigitSum(int n) {
+        String numberStr = Integer.toString(n);
+        int[] digits = new int[numberStr.length()];
+        for (int i = 0; i < numberStr.length(); i++){
+            digits[i] = numberStr.charAt(i) - '0';
+        }
+        int even = 0 ;
+        int odd = 0 ;
+        for(int i = 0 ; i < digits.length ; i++){
+            if(i==0 || i%2==0){
+                even+=digits[i];
+            }
+            else{
+                odd+=digits[i];
+            }
+        }
+        return even-odd;
+    }
+}
