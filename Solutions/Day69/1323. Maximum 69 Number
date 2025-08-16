@@ -1,0 +1,33 @@
+class Solution {
+    public int maximum69Number (int num) {
+        int max = num;
+        String nums = Integer.toString(num);
+        int[] digits = new int[nums.length()];
+        for(int i = 0 ; i < nums.length() ; i ++){
+            digits[i]=nums.charAt(i)-'0';
+        }
+        for(int i = 0 ; i < digits.length ; i ++){
+            if(digits[i]==9){
+                digits[i]=6;
+                int Mnum = change(digits);
+                max = Math.max(max,Mnum);
+                digits[i]=9;
+            }
+            else{
+                digits[i]=9;
+                int Mnum = change(digits);
+                max = Math.max(max,Mnum);
+                digits[i]=6;
+            }
+            
+        } 
+        return max ;
+    }
+    static int change(int[] digits){
+        int number = 0 ;
+        for(int i = 0 ; i < digits.length ; i ++ ){
+            number = number*10+digits[i];
+        }
+        return number ;
+    }
+}
