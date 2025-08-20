@@ -1,0 +1,17 @@
+class Solution {
+    public int pivotInteger(int n) {
+        if(n==1) return 1 ;
+        int leftsum = 0 , rightsum = n*(n+1)/2 ,  left = 1 ;
+        while(left<=n){
+            leftsum+=left;
+            rightsum-=(left-1);
+            if(leftsum==rightsum){
+                return left;
+            }
+            left++;
+            
+
+        }
+        return -1;
+     }
+}
