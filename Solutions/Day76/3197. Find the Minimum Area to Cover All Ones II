@@ -1,0 +1,81 @@
+class Solution {
+    private int minimumSum2(int[][] grid, int u, int d, int l, int r) {
+        int min_i = grid.length;      
+        int max_i = 0;                
+        int min_j = grid[0].length;   
+        int max_j = 0;                
+
+        for (int i = u; i <= d; i++) {
+            for (int j = l; j <= r; j++) {
+                if (grid[i][j] == 1) {
+                    min_i = Math.min(min_i, i);
+                    min_j = Math.min(min_j, j);
+                    max_i = Math.max(max_i, i);
+                    max_j = Math.max(max_j, j);
+                }
+            }
+        }
+
+        if (min_i > max_i) return Integer.MAX_VALUE / 3;
+
+        return (max_i - min_i + 1) * (max_j - min_j + 1);
+    }
+
+    private int[][] rotate(int[][] vec) {
+        int n = vec.length;      // original rows
+        int m = vec[0].length;   // original cols
+        int[][] ret = new int[m][n]; // rotated grid
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                ret[m - j - 1][i] = vec[i][j];
+            }
+        }
+        return ret;
+    }
+
+    private int solve(int[][] grid) {
+        int n = grid.length;
+        int m = grid[0].length;
+        int res = n * m; 
+        for (int i = 0; i + 1 < n; i++) {
+            for (int j = 0; j + 1 < m; j++) {
+                res = Math.min(
+                    res,
+                    minimumSum2(grid, 0, i, 0, m - 1) +   
+                    minimumSum2(grid, i + 1, n - 1, 0, j) +
+                    minimumSum2(grid, i + 1, n - 1, j + 1, m - 1)
+                );
+
+                res = Math.min(
+                    res,
+                    minimumSum2(grid, 0, i, 0, j) +          // top-left
+                    minimumSum2(grid, 0, i, j + 1, m - 1) +  // top-right
+                    minimumSum2(grid, i + 1, n - 1, 0, m - 1) // bottom band
+                );
+            }
+        }
+
+        for (int i = 0; i + 2 < n; i++) {       // first cut
+            for (int j = i + 1; j + 1 < n; j++) { // second cut
+                res = Math.min(
+                    res,
+                    minimumSum2(grid, 0, i, 0, m - 1) +       // top band
+                    minimumSum2(grid, i + 1, j, 0, m - 1) +   // middle band
+                    minimumSum2(grid, j + 1, n - 1, 0, m - 1) // bottom band
+                );
+            }
+        }
+
+        return res;
+    }
+
+    // \U0001f539 Main entry point
+    public int minimumSum(int[][] grid) {
+        int[][] rgrid = rotate(grid);  // rotated grid (for vertical splits)
+        return Math.min(
+            solve(grid),   // check horizontal & L-shape partitions
+            solve(rgrid)   // check vertical (via rotation) & L-shape partitions
+        );
+    }
+}
