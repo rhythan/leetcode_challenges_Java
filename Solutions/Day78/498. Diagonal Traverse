@@ -1,0 +1,39 @@
+class Solution {
+    public int[] findDiagonalOrder(int[][] mat) {
+        if (mat == null || mat.length == 0) return new int[0];
+
+        int m = mat.length;      // number of rows
+        int n = mat[0].length;   // number of columns
+        int[] result = new int[m * n];
+        int index = 0;
+
+        // Total number of diagonals = m + n - 1
+        for (int d = 0; d < m + n - 1; d++) {
+            // Intermediate list to hold the current diagonal's elements
+            List<Integer> intermediate = new ArrayList<>();
+
+            // Find the starting point of this diagonal
+            int r = d < n ? 0 : d - n + 1;
+            int c = d < n ? d : n - 1;
+
+            // Traverse the diagonal
+            while (r < m && c >= 0) {
+                intermediate.add(mat[r][c]);
+                r++;
+                c--;
+            }
+
+            // If the diagonal index is even, reverse the intermediate list before adding to result
+            if (d % 2 == 0) {
+                Collections.reverse(intermediate);
+            }
+
+            // Append the intermediate list to result array
+            for (int num : intermediate) {
+                result[index++] = num;
+            }
+        }
+
+        return result;
+    }
+}
