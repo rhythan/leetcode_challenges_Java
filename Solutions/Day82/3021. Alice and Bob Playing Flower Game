@@ -1,0 +1,15 @@
+class Solution {
+    public long flowerGame(int n, int m) {
+        int on = (n+1)/2 , om = (m+1)/2 , en = n/2 , em = m/2 ;
+        return (long)em*on +(long) en*om ;
+        // int ans = 0 ;
+        // for(int i = 0 ; i < n ; i ++){
+        //     for(int j = 0 ; j < m ; j ++){
+        //         if((i+j)%2==1){
+        //             ans++;
+        //         }
+        //     }
+        // }
+        // return ans;
+    }
+}
