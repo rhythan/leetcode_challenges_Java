@@ -1,0 +1,33 @@
+class Solution {
+    public long minOperations(int[][] queries) {
+        long answer = 0;
+        for (int[] que : queries) {
+            int l = que[0];
+            int r = que[1];
+            long steps = helper(l, r);
+            answer += (steps + 1) / 2;
+        }
+        return answer;
+    }
+
+    static long helper(int l, int r) {
+        long L = 1;
+        long S = 1;
+        long steps = 0;
+
+        while (L <= r) {
+            long R = 4 * L - 1;
+            long start = Math.max(L, l);
+            long end = Math.min(r, R);
+
+            if (start <= end) {
+                steps += (end - start + 1) * S;
+            }
+
+            S++;
+
+            L *= 4;
+        }
+        return steps;
+    }
+}
