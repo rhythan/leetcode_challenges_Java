@@ -1,0 +1,16 @@
+class Solution {
+    public int[] sumZero(int n) {
+        if(n==1) return new int[]{0};
+        int[] arr = new int[n];
+        int x =  0 ;
+        if(n%2==1){
+            arr[x++]=0;
+        }
+        for(int i = 1 ; x < n ; i ++){
+            arr[x++]=-i;
+            arr[x++]=i;
+        }
+       
+        return arr;
+    }
+}
