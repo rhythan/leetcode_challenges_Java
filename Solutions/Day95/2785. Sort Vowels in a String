@@ -1,0 +1,45 @@
+class Solution {
+    public String sortVowels(String s) {
+        // //brute force
+        char[] chars = s.toCharArray();
+        // for(int i = 0 ; i < ch.length ; i ++){
+        //     if(check(ch[i])){
+        //         for(int j = i+1 ; j < ch.length ; j++ ){
+        //             if(check(ch[j])){
+        //                 if((int)ch[i]>(int)ch[j]){
+        //                     char ref = ch[i];
+        //                     ch[i]=ch[j];
+        //                     ch[j]=ref;
+
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+        // return new String(ch);
+        List<Character> ch = new ArrayList<>();
+        for (char c : s.toCharArray()) {
+            if (check(c)) {
+                ch.add(c);
+            }
+        }
+        if (ch.size() == 0) return s;
+        Collections.sort(ch);
+        int j = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (check(s.charAt(i))) {
+                chars[i] = ch.get(j++);
+            }
+        }
+        return new String(chars);
+    }
+
+    static boolean check(char ch) {
+        String ss = "aeiouAEIOU";
+        for (char c : ss.toCharArray()) {
+            if (ch == c)
+                return true;
+        }
+        return false;
+    }
+}
