@@ -1,0 +1,41 @@
+class Solution {
+    public boolean doesAliceWin(String s) {
+        for (int i = 0; i < s.length(); ++i) {
+            char c = s.charAt(i);
+            if (c=='a' || c=='e' || c=='i' || c=='o' || c=='u')
+                return true;
+        }
+        return false;
+    }
+}
+// brute force
+// class Solution {
+//     public boolean doesAliceWin(String s) {
+//         if (ss(s) % 2 == 1) return true;
+
+//         int left = 0, right = s.length() - 1;
+
+//         while (left < right) {
+//             String word = s.substring(left, right + 1);
+//             if (ss(word) % 2 == 1) return true;
+//             right--; 
+//         }
+//         return false;
+//     }
+
+//     static int ss(String S) {
+//         int cnt = 0;
+//         for (char ch : S.toCharArray()) {
+//             if (check(ch)) cnt++;
+//         }
+//         return cnt;
+//     }
+
+//     static boolean check(char ch) {
+//         String ss = "aeiouAEIOU";
+//         for (char c : ss.toCharArray()) {
+//             if (ch == c) return true;
+//         }
+//         return false;
+//     }
+// }
