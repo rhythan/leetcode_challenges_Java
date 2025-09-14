@@ -1,0 +1,48 @@
+class Solution {
+    public String[] spellchecker(String[] wordlist, String[] queries) {
+        Set<String> words = new HashSet<>();
+        Map<String,String> caseinsensitive = new HashMap<>();
+        Map<String,String> vowelinsensitive = new HashMap<>();
+
+        for(String word : wordlist){
+            words.add(word);
+            caseinsensitive.putIfAbsent(word.toLowerCase(), word);
+            vowelinsensitive.putIfAbsent(devowel(word.toLowerCase()), word);
+        }
+
+        String[] answer = new String[queries.length];
+        for(int i = 0 ; i < queries.length ; i++){
+            String query = queries[i];
+            if(words.contains(query)){
+                answer[i] = query;
+                continue;
+            }
+            if(caseinsensitive.containsKey(query.toLowerCase())){
+                answer[i] = caseinsensitive.get(query.toLowerCase());
+                continue;
+            }
+            if(vowelinsensitive.containsKey(devowel(query.toLowerCase()))){
+                answer[i] = vowelinsensitive.get(devowel(query.toLowerCase()));
+                continue;
+            }
+            answer[i] = "";
+        } 
+        return answer;
+    }
+
+    static String devowel(String s){
+        StringBuilder str = new StringBuilder();
+        for(char c : s.toCharArray()){
+            if(isvowel(c)){
+                str.append("*");
+            } else {
+                str.append(c);
+            }
+        }
+        return str.toString();
+    }
+
+    static boolean isvowel(char c){
+        return c=='a'||c=='e'||c=='i'||c=='o'||c=='u';
+    }
+}
