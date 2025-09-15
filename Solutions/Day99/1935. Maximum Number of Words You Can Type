@@ -1,0 +1,20 @@
+class Solution {
+    public int canBeTypedWords(String text, String brokenLetters) {
+        String[] arr = text.split(" ");
+        int word = 0 ;
+        for(int i = 0 ; i < arr.length ; i ++){
+            if(helper(arr[i],brokenLetters)){
+                word++;
+            }
+        }
+        return word;
+    }
+    static boolean helper(String s , String brokenLetters){
+        for(char c : s.toCharArray()){
+            if(brokenLetters.indexOf(c)>=0){
+                return false ;
+            }
+        }
+        return true;
+    }
+}
