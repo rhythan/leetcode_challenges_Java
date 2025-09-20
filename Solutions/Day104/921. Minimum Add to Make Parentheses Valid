@@ -1,0 +1,17 @@
+class Solution {
+    public int minAddToMakeValid(String s) {
+        int Ocount = 0 , Ccount =  0  ;
+        for(char ch : s.toCharArray()){
+            if(ch=='('){
+                Ocount++;
+            }
+            else if (ch==')' && Ocount>0){
+                Ocount--;    
+            }
+            else{
+                Ccount++;
+            }
+        }
+        return Ccount+Ocount;
+    }
+}
