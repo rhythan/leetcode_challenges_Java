@@ -1,0 +1,20 @@
+class Solution {
+    public int triangleNumber(int[] nums) {
+        Arrays.sort(nums);
+        int valid = 0;
+       
+        for (int k = nums.length-1 ; k > 1; k--) {
+            int i = 0, j = k - 1;
+            while (i < j) {
+                if ((nums[i] + nums[j]) > nums[k]) {
+                    valid += j - i;
+                    j--;
+                } else {
+                    i++;
+                }
+            }
+        }
+        return valid;
+
+    }
+}
