@@ -1,0 +1,22 @@
+class Solution {
+    public int triangularSum(int[] nums) {
+        List<Integer> arr = new ArrayList<>();
+        for(int num : nums){
+            arr.add(num);
+        }
+        int size = nums.length ;
+        for(int i = 1 ; i <= nums.length-1 ; i++){
+            List<Integer> arrs = new ArrayList<>();
+            int start = 0 ;
+            while(start<size-1){
+                arrs.add((arr.get(start)+arr.get(start+1))%10);
+                start++;
+            }
+
+            size--;
+            arr.clear();
+            arr.addAll(arrs);
+        }
+        return arr.get(0);
+    }
+}
