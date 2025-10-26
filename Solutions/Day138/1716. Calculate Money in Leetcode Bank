@@ -1,0 +1,17 @@
+class Solution {
+    public int totalMoney(int n) {
+        int mondey_money = 1;
+        int result =0;
+    while(n>0){
+        int money = mondey_money;
+        for(int i =1; i<=Math.min(7,n); i++){
+            result= result+money;
+            money++;
+
+        }
+        n = n-7;
+        mondey_money++;
+        }
+        return result;
+    }
+}
