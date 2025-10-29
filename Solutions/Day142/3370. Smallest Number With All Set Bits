@@ -1,0 +1,18 @@
+class Solution {
+    public int smallestNumber(int n) {
+        while(true){
+            if(check(n)){
+                return n ;
+            }
+            n++;
+        }
+        
+    }
+    static boolean check(int n){
+        String nums = Integer.toBinaryString(n);
+        for(char ch : nums.toCharArray()){
+            if(ch=='0') return false;
+        }
+        return true;
+    }
+}
