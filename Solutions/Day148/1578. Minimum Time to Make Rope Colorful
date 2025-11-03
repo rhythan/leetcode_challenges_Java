@@ -1,0 +1,16 @@
+class Solution {
+    public int minCost(String colors, int[] neededTime) {
+        int cnt = 0 ;
+        for(int i = 1 ; i < colors.length();  i++){
+            char ch1 = colors.charAt(i);
+            char ch2 = colors.charAt(i-1);
+            if(ch1==ch2){
+                cnt+=Math.min(neededTime[i],neededTime[i-1]);
+                neededTime[i]=Math.max(neededTime[i],neededTime[i-1]);
+            }
+           
+
+        }
+        return cnt;        
+    }
+}
