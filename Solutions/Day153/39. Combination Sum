@@ -1,0 +1,21 @@
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> lists = new ArrayList<>();
+        traverse(candidates,target,0,lists,new ArrayList<Integer>());
+        return lists;
+    }
+    static void traverse(int[] mat , int k ,int i ,   List<List<Integer>> lists , List<Integer> list){
+       
+        int n = mat.length;
+        if(k==0){
+            lists.add(new ArrayList<>(list));
+            return;
+        }
+        if(k<0 || i==n) return;
+        list.add(mat[i]);        
+        traverse(mat,k-mat[i],i,lists,list);
+        list.remove(list.size()-1);
+        traverse(mat,k,i+1,lists,list);
+        
+    }
+}
