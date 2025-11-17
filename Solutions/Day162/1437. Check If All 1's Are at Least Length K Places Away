@@ -1,0 +1,19 @@
+class Solution {
+    public boolean kLengthApart(int[] nums, int k) {
+        int zeros = 0 ;
+        boolean vist = false;
+        for(int i = 0 ; i < nums.length ; i ++){
+            if(nums[i]==0) zeros++;
+            else{
+                if(zeros<k && i !=0 && vist ){
+                    return false;
+                }
+                else{
+                    vist=true;
+                    zeros=0;
+                }
+            }
+        }
+        return true;
+    }
+}
