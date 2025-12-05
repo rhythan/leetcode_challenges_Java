@@ -1,0 +1,17 @@
+class Solution {
+    public int countPartitions(int[] nums) {
+        int[] prefixSum = new int[nums.length];
+        prefixSum[0]=nums[0];
+        int sum = nums[0];
+        for(int i = 1 ; i < nums.length ; i ++){
+            sum+=nums[i];
+            prefixSum[i]=prefixSum[i-1]+nums[i];
+        }
+        int cnt = 0;
+        for(int i = 0 ; i < nums.length-1 ; i ++){
+            int num = prefixSum[i]-(sum-prefixSum[i]);
+            if(num%2==0)cnt++;
+        }
+        return cnt;
+    }
+}
