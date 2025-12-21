@@ -1,0 +1,19 @@
+class Solution {
+    public boolean checkRecord(String s) {
+        int countABS = 0 , maxlate = 0 , late = 0;
+        for(int i = 0 ; i < s.length() ; i ++){
+            if(s.charAt(i)=='A') {
+                countABS++;
+                late=0;
+                }
+            else if (s.charAt(i)=='L'){
+                late++;
+                maxlate=Math.max(maxlate,late);
+            }
+            else{
+                late=0;
+            }
+        }
+        return countABS<2 & maxlate<3 ;
+    }
+}
