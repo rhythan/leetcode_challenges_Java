@@ -1,0 +1,17 @@
+class Solution {
+    public int minimumBoxes(int[] apple, int[] capacity) {
+        int reqSize = 0 ;
+        for(int n : apple) reqSize+=n;
+        Arrays.sort(capacity);
+        int ans = 0 , cnt = 0;
+        for(int i = capacity.length-1 ; i >= 0 ; i --){
+            if(ans>=reqSize){
+                break;
+            }
+            ans+=capacity[i];
+            cnt++;
+        }
+        return cnt;
+    }
+
+}
