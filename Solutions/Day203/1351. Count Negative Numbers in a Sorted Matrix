@@ -1,0 +1,20 @@
+class Solution {
+    public int countNegatives(int[][] grid) {
+        int cnt = 0 ;
+        int col = grid[0].length;
+        for(int i = 0 ; i < grid.length ; i ++){
+            int l = 0 , r = col - 1 ;
+            int fneg = col;
+            while(l<=r){
+                int mid = (l+r)/2;
+                if(grid[i][mid] < 0){
+                    fneg = mid ;
+                    r = mid - 1 ;
+                }
+                else l = mid + 1 ;
+            }
+            cnt+= col-fneg;
+        }
+        return cnt;
+    }
+}
