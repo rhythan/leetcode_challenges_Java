@@ -1,0 +1,13 @@
+class Solution {
+    public boolean squareIsWhite(String coordinates) {
+        if(coordinates.indexOf('a')!=-1 || coordinates.indexOf('c')!=-1 || coordinates.indexOf('e')!=-1 || coordinates.indexOf('g')!=-1 ){
+            int num = (int)coordinates.charAt(1);
+            if((num-48)%2==0) return true;
+        }
+        else{
+            int num = (int)coordinates.charAt(1);
+            if((num-48)%2!=0) return true;
+        }
+        return false;
+    }
+}
