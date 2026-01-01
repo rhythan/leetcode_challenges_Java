@@ -1,0 +1,15 @@
+class Solution {
+    public int minStartValue(int[] nums) {
+        int[] prefixsum = new int[nums.length];
+        prefixsum[0]=nums[0];
+        for(int i = 1 ; i < nums.length ; i ++){
+            prefixsum[i]=prefixsum[i-1]+nums[i];
+        }
+        int min = Integer.MAX_VALUE;
+        for(int num : prefixsum){
+            min = Math.min(min,num);
+        }
+        return (min>0)?1:(min*-1)+1;
+
+    }
+}
