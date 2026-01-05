@@ -1,0 +1,24 @@
+class Solution {
+    public long maxMatrixSum(int[][] matrix) {
+        List<Integer> nums = new ArrayList<>();
+        int cnt = 0;
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                nums.add(matrix[i][j]);
+                if (matrix[i][j] < 0) cnt++;
+            }
+        }
+
+        long sum = 0;
+        int minAbs = Integer.MAX_VALUE;
+
+        for (int i = 0; i < nums.size(); i++) {
+            int val = Math.abs(nums.get(i));
+            sum += val;
+            minAbs = Math.min(minAbs, val);
+        }
+
+        return (cnt % 2 == 0) ? sum : sum - 2L * minAbs;
+    }
+}
