@@ -1,0 +1,55 @@
+class Solution {
+    public int[] decrypt(int[] code, int k) {
+        int[] answer = new int[code.length];
+        if(k==0) return answer;
+        //return k>0? KgreaterThanZero(code,answer,k):KlessThanZero(code,answer,k*-1);
+        // using sliding window
+        int start,end,sum=0;
+        int n = code.length;
+        if(k>0){
+            start = 1 ; 
+            end = k ;
+        }
+        else{
+            k=Math.abs(k);
+            start=n-k;
+            end=n-1;
+        }
+        //intial window sum
+        for(int i = start ; i <= end ; i ++){
+            sum+=code[i%n];
+        }
+        for(int i = 0 ; i < n ; i ++){
+            answer[i]=sum;
+            sum-=code[start%n];
+            start++;
+            end++;
+            sum+=code[end%n];
+        }
+        return answer;
+
+    }
+
+    // int[] KgreaterThanZero(int[] code, int[] answer , int k ) {
+    //     for(int i = 0 ; i < code.length ; i++ ){
+    //         int sum = 0 ;  
+    //         for(int j = i + 1 , cnt = 0 ; cnt < k ; j++ , cnt++   ){
+    //             int index = j % code.length ;
+    //             sum+=code[index];
+    //         }
+    //         answer[i]=sum;
+    //     }
+    //     return answer;
+    // }
+    // int[] KlessThanZero(int[] code, int[] answer , int k ) {
+    //     for(int i = 0 ; i < code.length ; i++ ){
+    //         int sum = 0 ;  
+    //         for(int j = i - 1  , cnt = 0 ; cnt < k ; j-- , cnt++   ){
+    //             int index = (j+code.length) % code.length ;
+    //             sum+=code[index];
+    //         }
+    //         answer[i]=sum;
+    //     }
+    //     return answer;
+    // }
+}
