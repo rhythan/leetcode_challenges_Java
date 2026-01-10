@@ -1,0 +1,19 @@
+class Solution {
+    public int countGoodSubstrings(String s) {
+        if(s.length()<3) return 0;
+        char[] ch = s.toCharArray();
+        char a = ch[0] , b = ch[1] , c = ch[2];
+        int ans = 0 ;
+        for(int i = 3 ; i < ch.length ; i ++){
+            if(a!=b && b!=c && a!=c) ans++;
+            a = b ;
+            b = c ; 
+            c = ch[i];
+
+        }
+        if(a!=b && b!=c && a!=c) ans++;
+        
+        return ans ;
+        
+    }
+}
