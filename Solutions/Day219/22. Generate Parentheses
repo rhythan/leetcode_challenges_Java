@@ -1,0 +1,19 @@
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> list = new ArrayList<>();
+        printer(0,0,"" ,n,list);
+        return list;
+    }
+    static void printer(int left , int right , String s , int n , List<String> list){
+        if(s.length()==n*2){
+            list.add(s);
+            return;
+        }
+        if(left<n){
+            printer(left+1,right,s+"(",n,list);
+        }
+        if(right<left){
+            printer(left,right+1,s+")",n,list);
+        }
+    }
+}
