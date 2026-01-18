@@ -1,0 +1,23 @@
+class Solution {
+    public int minimumSumSubarray(List<Integer> nums, int l, int r) {
+        int PrefixSum[] = new int[nums.size()];
+        PrefixSum[0] = nums.get(0);
+        for(int i = 1 ; i < nums.size() ; i ++) PrefixSum[i]=nums.get(i)+PrefixSum[i-1];
+        int min = Integer.MAX_VALUE;
+        for(int k = l ; k <= r ; k ++){
+            int curmin = findmin(PrefixSum,k);
+            min = Math.min(curmin,min);
+        }
+        return (min!=Integer.MAX_VALUE)?min:-1;
+
+        
+    }
+    int findmin( int[] nums , int k ){
+        int min = (nums[k-1]>0)?nums[k-1]:Integer.MAX_VALUE;
+        for(int i = k ; i < nums.length ; i ++){
+            int num = nums[i]-nums[i-k];
+            if(num>0 && min>num) min = num;
+        }
+        return min;
+    }
+}
