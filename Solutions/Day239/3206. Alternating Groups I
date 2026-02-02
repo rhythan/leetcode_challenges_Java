@@ -1,0 +1,17 @@
+class Solution {
+    public int numberOfAlternatingGroups(int[] colors) {
+
+        int count = 0;
+        int n = colors.length;
+        for (int mid = 0; mid < n; mid++) {
+            int left = colors[((mid - 1) + n) % n];
+            int curr = colors[mid];
+            int right = colors[(mid + 1) % n];
+
+            if (curr != left && curr != right) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
