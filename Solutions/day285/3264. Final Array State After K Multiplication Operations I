@@ -1,0 +1,19 @@
+class Solution {
+    public int[] getFinalState(int[] nums, int k, int multiplier) {
+        for(int i = 0 ; i < k ; i ++){
+            modify(nums,multiplier);
+        }
+        return nums;
+    }
+    void modify(int[] nums , int m ){
+        int min = Integer.MAX_VALUE;
+        int index = 0 ;
+        for(int i = 0 ; i < nums.length ; i ++){
+            if(nums[i] < min){
+                index = i ;
+                min  = nums[i];
+            }
+        }
+        nums[index] = nums[index]*m;
+    }
+}
