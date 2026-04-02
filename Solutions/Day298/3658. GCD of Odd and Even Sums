@@ -1,0 +1,21 @@
+class Solution {
+    
+    public int gcd(int a, int b){
+        if(a==0||b==0){
+            return Math.max(a,b);
+        }
+        if(a==b){
+            return a;
+        }
+
+        if(a>b){
+            return gcd(a-b,b);
+        }
+        return gcd(a,b-a);
+    }
+    public int gcdOfOddEvenSums(int n) {
+        int oddsum = n*n;
+        int evensum = n*(n+1);
+        return gcd(oddsum, evensum);
+    }
+}
