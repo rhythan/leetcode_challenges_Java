@@ -1,0 +1,19 @@
+class Solution {
+    public int minElement(int[] nums) {
+        int min = Integer.MAX_VALUE;
+        for(int num : nums){
+            if(sum(num)<min){
+                min = sum(num);
+            }
+        }
+        return min ;
+    }
+    int sum(int n ){
+        int ans = 0 ;
+        while(n>0){
+            ans+=n%10;
+            n/=10;
+        }
+        return ans ;
+    }
+}
