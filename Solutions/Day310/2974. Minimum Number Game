@@ -1,0 +1,18 @@
+class Solution {
+    public int[] numberGame(int[] nums) {
+        int[] ans = new int[nums.length];
+        List<Integer> list = new ArrayList<Integer>();
+        for(int num : nums) list.add(num);
+        Collections.sort(list);
+        int i = 0 ;
+        while(list.size() > 0 ){
+            ans[i++]=list.get(1); 
+            ans[i++]=list.get(0);
+            list.remove(1); 
+            list.remove(0); 
+            
+        }
+        return ans;
+    }
+    
+}
