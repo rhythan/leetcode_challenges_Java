@@ -1,0 +1,10 @@
+class Solution {
+    public int reverseDegree(String s) {
+        int answer = 0 , index = 1 ;
+        for(char ch : s.toCharArray()){
+            int RevNum = 26 - ((int)ch - 'a') ;
+            answer += RevNum * index++ ; 
+        }
+        return answer;
+    }
+}
