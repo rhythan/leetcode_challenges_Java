@@ -1,0 +1,19 @@
+class Solution {
+    public int generateKey(int num1, int num2, int num3) {
+        
+        int[] nums = {1000, 100, 10, 1};
+        int ans = 0;
+
+        for (int num : nums) {
+            int d1 = (num1 / num) % 10;
+            int d2 = (num2 / num) % 10;
+            int d3 = (num3 / num) % 10;
+
+            int minDigit = Math.min(d1, Math.min(d2, d3));
+
+            ans = ans * 10 + minDigit;
+        }
+
+        return ans;
+    }
+}
