@@ -1,0 +1,12 @@
+class Solution {
+    public String sortSentence(String s) {
+        String[] arr = s.split(" ");
+        String[] res = new String[arr.length];
+        for(String i:arr)
+        {
+            res[i.charAt(i.length()-1)-'0'-1] = i.substring(0,i.length()-1);
+        }
+        String ans = String.join(" ",res);
+        return ans;
+    }
+}
