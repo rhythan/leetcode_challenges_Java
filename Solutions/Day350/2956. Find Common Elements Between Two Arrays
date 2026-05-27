@@ -1,0 +1,22 @@
+class Solution {
+    public int[] findIntersectionValues(int[] nums1, int[] nums2) {
+        int left = 0, right = 0;
+        for(int num1: nums1){
+            for(int num2 : nums2){
+                if(num1 == num2){
+                    left++;
+                    break;
+                } 
+            }
+        }
+        for(int num2: nums2){
+            for(int num1 : nums1){
+                if(num2 == num1){
+                    right++;
+                    break;
+                } 
+            }
+        }
+        return new int[]{left, right};
+    }
+}
