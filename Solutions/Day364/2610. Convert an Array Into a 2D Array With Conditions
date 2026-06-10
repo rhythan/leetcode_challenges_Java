@@ -1,0 +1,35 @@
+class Solution {
+    public List<List<Integer>> findMatrix(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        List<List<Integer>> ans = new ArrayList<>();
+
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        while (!map.isEmpty()) {
+            List<Integer> list = new ArrayList<>();
+
+            Iterator<Map.Entry<Integer, Integer>> it = map.entrySet().iterator();
+
+            while (it.hasNext()) {
+                Map.Entry<Integer, Integer> e = it.next();
+
+                int key = e.getKey();
+                int value = e.getValue();
+
+                list.add(key);
+
+                if (value == 1) {
+                    it.remove();
+                } else {
+                    e.setValue(value - 1);
+                }
+            }
+
+            ans.add(list);
+        }
+
+        return ans;
+    }
+}
