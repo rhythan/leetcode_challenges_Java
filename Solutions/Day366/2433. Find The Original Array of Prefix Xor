@@ -1,0 +1,11 @@
+class Solution {
+    public int[] findArray(int[] pref) {
+        int previous = pref[0];
+
+        for (int i = 1; i < pref.length; i++) {
+            pref[i] ^= previous;
+            previous ^= pref[i];
+        }
+        return pref ;
+    }
+}
