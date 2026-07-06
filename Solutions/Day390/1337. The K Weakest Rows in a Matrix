@@ -1,0 +1,31 @@
+
+
+class Solution {
+    public int[] kWeakestRows(int[][] mat, int k) {
+        int[] answer = new int[k];
+        int[][] arr = new int[mat.length][mat[0].length];
+
+        for (int i = 0; i < mat.length; i++) {
+            int soldiers = 0;
+            for (int j = 0; j < mat[0].length; i++) {
+                if (mat[i][j] == 1)
+                    soldiers++;
+            }
+            arr[i][0] = soldiers;
+            arr[i][1] = i ;
+
+        }
+        Arrays.sort(arr, (a, b) -> {
+            if (a[0] == b[0]) {
+                return a[1] - b[1]; 
+            }
+            return a[0] - b[0]; 
+        });
+
+        for (int i = 0; i < k; i++) {
+            answer[i] = arr[i][1];
+        }
+        return answer ;
+
+    }
+}
