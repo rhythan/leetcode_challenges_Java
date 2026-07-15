@@ -1,0 +1,19 @@
+class Solution {
+    public boolean areOccurrencesEqual(String s) {
+        int[] freq = new int[26];
+
+        for (char c : s.toCharArray()) {
+            freq[c - 'a']++;
+        }
+
+        int val = freq[s.charAt(0) - 'a'];
+
+        for (int f : freq) {
+            if (f != 0 && f != val) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
