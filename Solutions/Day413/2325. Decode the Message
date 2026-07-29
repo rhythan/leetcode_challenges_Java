@@ -1,0 +1,28 @@
+class Solution {
+    public String decodeMessage(String key, String message) {
+        key = key.replaceAll("\\s","");
+        Set<Character> set = new HashSet<>();
+        HashMap<Character,Character> map = new HashMap<>();
+        int start = (int)'a';
+        for(int i = 0 ; i < key.length() ; i ++){
+            char ch = key.charAt(i);
+            if(set.size()>26) break;
+            else if(!set.contains(ch)){
+                map.put(ch,(char)start++);
+                set.add(ch);
+            }
+             
+        }
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0 ; i < message.length() ; i ++){
+            char ch = message.charAt(i);
+            if(ch==' ') sb.append(" ");
+            else{
+                sb.append(map.get(ch));
+            }
+        }
+        return sb.toString();
+        
+
+    }
+}
