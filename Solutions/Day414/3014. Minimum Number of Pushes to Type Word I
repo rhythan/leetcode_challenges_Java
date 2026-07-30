@@ -1,0 +1,22 @@
+class Solution {
+    public int minimumPushes(String word) {
+        int len = word.length() / 8;
+        int rem = word.length() % 8;
+
+        if (len >= 3) {
+            return 48 + (rem * 4);
+
+        } else if (len == 2) {
+
+            return 24 + (rem * 3);
+        }
+
+        else if (len == 1) {
+            return 8 + (rem * 2);
+        } else {
+            return rem * 1;
+        }
+
+    }
+
+}
