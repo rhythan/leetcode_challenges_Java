@@ -1,0 +1,16 @@
+class Solution {
+    public String truncateSentence(String s, int k) {
+        String[] str = s.split("\\s");
+        StringBuilder sb = new StringBuilder();
+        int cnt = 0;
+        for(String ss : str){
+            if(cnt++ == k) break;
+            sb.append(ss);
+            sb.append(" ");
+        }
+        sb.deleteCharAt(sb.length()-1);
+
+        return sb.toString();
+        
+    }
+}
