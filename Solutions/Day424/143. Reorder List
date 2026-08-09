@@ -1,0 +1,36 @@
+class Solution {
+    public void reorderList(ListNode head) {
+
+        ArrayList<Integer> list = new ArrayList<>();
+
+        ListNode temp = head;
+
+        while(temp != null){
+            list.add(temp.val);
+            temp = temp.next;
+        }
+
+        int left = 0;
+        int right = list.size() - 1;
+
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        while(left <= right){
+
+            ans.add(list.get(left));
+            left++;
+
+            if(left <= right){
+                ans.add(list.get(right));
+                right--;
+            }
+        }
+
+        temp = head;
+
+        for(int value : ans){
+            temp.val = value;
+            temp = temp.next;
+        }
+    }
+}
